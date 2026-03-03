@@ -1,262 +1,261 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CBT UM | MTS NURUL BAHRI</title>
-    
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=Lexend:wght@300;600;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ujian Madrasah | MTS NURUL BAHRI</title>
+    
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
-    <style>
-        :root {
-            --accent: #00ffa3;
-            --accent-glow: rgba(0, 255, 163, 0.3);
-            --bg-deep: #0a0c10;
-            --card-bg: rgba(255, 255, 255, 0.03);
-            --border: rgba(255, 255, 255, 0.08);
-            --warning: #facc15;
-            --danger: #ff4d4d;
-        }
+    <style>
+        :root {
+            --primary: #059669;
+            --primary-light: #ecfdf5;
+            --dark: #0f172a;
+            --slate: #64748b;
+            --bg: #f8fafc;
+        }
 
-        body {
-            font-family: 'Inter', sans-serif;
-            background-color: var(--bg-deep);
-            color: #e2e8f0;
-            background-image: 
-                radial-gradient(circle at 10% 20%, rgba(0, 255, 163, 0.05) 0%, transparent 40%),
-                radial-gradient(circle at 90% 80%, rgba(0, 163, 255, 0.05) 0%, transparent 40%);
-        }
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: var(--bg);
+            color: var(--dark);
+        }
 
-        /* Fitur Lock Screen */
-        #lock-overlay {
-            display: none;
-            position: fixed;
-            top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(10, 12, 16, 0.98);
-            z-index: 9999;
-            backdrop-filter: blur(15px);
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-        }
+        /* Modern Navbar/Header */
+        .glass-header {
+            background: linear-gradient(135deg, var(--dark) 0%, #1e293b 100%);
+            padding: 80px 0 120px 0;
+            border-bottom-left-radius: 50px;
+            border-bottom-right-radius: 50px;
+            color: white;
+            text-align: center;
+        }
 
-        .modern-header { padding: 60px 0 40px; text-align: center; }
-        .school-name {
-            font-family: 'Lexend', sans-serif; font-weight: 800; font-size: 2.8rem;
-            background: linear-gradient(to bottom, #fff 40%, #94a3b8);
-            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
-            margin-bottom: 0;
-        }
-        
-        .exam-badge {
-            background: linear-gradient(45deg, #00ffa3, #00a3ff);
-            color: #000;
-            padding: 4px 12px;
-            border-radius: 6px;
-            font-weight: 800;
-            font-size: 0.8rem;
-            text-transform: uppercase;
-            display: inline-block;
-            margin-bottom: 10px;
-        }
+        /* Search & Filter Bar Simulation */
+        .search-container {
+            max-width: 600px;
+            margin: -30px auto 40px;
+            background: white;
+            padding: 10px;
+            border-radius: 20px;
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+            display: flex;
+            align-items: center;
+        }
 
-        .status-pill {
-            background: var(--card-bg); border: 1px solid var(--border);
-            padding: 6px 16px; border-radius: 100px; font-size: 0.7rem;
-            text-transform: uppercase; letter-spacing: 1px; color: var(--accent);
-        }
+        /* Bento Card Style */
+        .subject-card {
+            background: white;
+            border: 1px solid rgba(0,0,0,0.05);
+            border-radius: 24px;
+            padding: 24px;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            height: 100%;
+            position: relative;
+            overflow: hidden;
+        }
 
-        .glass-card {
-            background: var(--card-bg); backdrop-filter: blur(12px);
-            border: 1px solid var(--border); border-radius: 20px;
-            padding: 24px; height: 95%; transition: 0.3s ease;
-        }
-        .glass-card:hover { border-color: var(--accent); transform: translateY(-5px); }
+        .subject-card:hover {
+            transform: translateY(-12px);
+            box-shadow: 0 30px 50px -12px rgba(0, 0, 0, 0.15);
+            border-color: var(--primary);
+        }
 
-        .sidebar-box { border-left: 3px solid var(--accent); background: rgba(0, 255, 163, 0.02); }
-        .instruction-step { display: flex; gap: 12px; margin-bottom: 15px; font-size: 0.85rem; }
-        .step-num { 
-            width: 24px; height: 24px; background: var(--accent); color: #000; 
-            border-radius: 6px; font-weight: 800; display: flex; align-items: center; justify-content: center;
-            flex-shrink: 0; font-size: 0.75rem;
-        }
+        .icon-box {
+            width: 60px;
+            height: 60px;
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            margin-bottom: 20px;
+            transition: 0.3s;
+        }
 
-        .integrity-banner {
-            background: linear-gradient(90deg, rgba(0,255,163,0.1) 0%, rgba(10,12,16,0) 100%);
-            border-radius: 15px; padding: 20px; border-left: 4px solid var(--accent); margin-bottom: 30px;
-        }
+        .subject-card:hover .icon-box {
+            transform: scale(1.1) rotate(-5deg);
+        }
 
-        .btn-modern {
-            background: #fff; color: #000; border: none; padding: 10px 20px;
-            border-radius: 10px; font-weight: 600; font-size: 0.9rem;
-            width: 100%; transition: 0.3s; text-decoration: none; display: inline-block; text-align: center;
-        }
-        .btn-modern:hover { background: var(--accent); box-shadow: 0 0 15px var(--accent-glow); color: #000; }
+        .status-badge {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            padding: 6px 12px;
+            border-radius: 100px;
+            font-size: 11px;
+            font-weight: 700;
+            text-transform: uppercase;
+        }
 
-        .icon-hex {
-            width: 45px; height: 45px; background: rgba(0, 255, 163, 0.1);
-            color: var(--accent); border-radius: 12px; display: flex;
-            align-items: center; justify-content: center; margin-bottom: 15px;
-        }
+        .badge-online { background: #dcfce7; color: #15803d; }
 
-        .meta-info { font-size: 0.75rem; color: #94a3b8; display: flex; gap: 10px; margin-bottom: 15px; }
-    </style>
+        .btn-exam {
+            background: var(--dark);
+            color: white;
+            border-radius: 14px;
+            padding: 12px;
+            width: 100%;
+            font-weight: 600;
+            border: none;
+            margin-top: 15px;
+            transition: 0.3s;
+        }
+
+        .btn-exam:hover {
+            background: var(--primary);
+            color: white;
+            box-shadow: 0 10px 15px -3px rgba(5, 150, 105, 0.3);
+        }
+
+        .meta-info {
+            display: flex;
+            gap: 15px;
+            font-size: 13px;
+            color: var(--slate);
+            margin-top: 10px;
+        }
+
+        /* Decorative Background */
+        .bg-pattern {
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            opacity: 0.05;
+            pointer-events: none;
+        }
+    </style>
 </head>
 <body>
 
-    <div id="lock-overlay">
-        <i class="fas fa-user-shield mb-4" style="font-size: 5rem; color: var(--danger);"></i>
-        <h2 class="fw-bold">PENGISIAN DITUTUP</h2>
-        <p class="text-secondary">Sistem Ujian Madrasah hanya dapat diakses pukul 06:00 - 15:00 WIB.<br>Koneksi akan terbuka kembali besok pagi.</p>
-        <div class="status-pill mt-3" id="clock-display" style="border-color: var(--warning); color: var(--warning);"></div>
-    </div>
+    <header class="glass-header">
+        <div class="container">
+            <span class="badge bg-success mb-3 px-3 py-2 rounded-pill">Tahun Pelajaran 2025/2026</span>
+            <h1 class="display-4 fw-800">MTS NURUL BAHRI</h1>
+            <p class="lead opacity-75">Sistem Informasi Ujian Berbasis Komputer (CBT)</p>
+        </div>
+    </header>
 
-    <header class="modern-header">
-        <div class="container">
-            <div class="exam-badge">Ujian Madrasah (UM)</div>
-            <h1 class="school-name">MTS NURUL BAHRI</h1>
-            <div class="d-flex justify-content-center gap-2 mt-2 mb-3">
-                <div class="status-pill">TP 2025/2026</div>
-                <div class="status-pill" id="live-indicator"><i class="fas fa-circle me-1" style="font-size: 8px;"></i> System Live</div>
-            </div>
-            <p class="text-secondary small">SECURE CBT GATEWAY INTERFACE FOR FINAL EXAMINATION</p>
-        </div>
-    </header>
+    <main class="container">
+        <div class="search-container">
+            <div class="ms-3 flex-grow-1 text-muted small">
+                <i class="fas fa-info-circle me-2 text-primary"></i> 
+                "Kejujuran adalah kunci kesuksesan. Selamat menempuh ujian!"
+            </div>
+            <div class="pe-3">
+                <span class="badge bg-light text-dark border">UM-2026</span>
+            </div>
+        </div>
 
-    <main class="container mb-5">
-        <div class="row g-4">
-            <div class="col-lg-4">
-                <div class="integrity-banner">
-                    <h6 class="text-white fw-bold mb-2"><i class="fas fa-shield-alt me-2 text-accent"></i>PROTOKOL INTEGRITAS</h6>
-                    <p class="small text-secondary mb-0">"Nilai yang tinggi mungkin membawamu ke sekolah favorit, tapi <strong>kejujuran</strong> akan membawamu ke puncak kehidupan yang berkah."</p>
-                </div>
+        <div class="row g-4 mb-5">
+            
+            <div class="col-md-6 col-lg-4">
+                <div class="subject-card">
+                    <span class="status-badge badge-online">Tersedia</span>
+                    <div class="icon-box" style="background: #eff6ff; color: #2563eb;">
+                        <i class="fas fa-book-open"></i>
+                    </div>
+                    <h5 class="fw-bold mb-1">Al-Qur'an Hadits</h5>
+                    <p class="text-muted small mb-3">Evaluasi pemahaman ayat dan hadits pilihan.</p>
+                    <div class="meta-info">
+                        <span><i class="far fa-clock me-1"></i> 90 Menit</span>
+                        <span><i class="far fa-file-alt me-1"></i> 40 Soal</span>
+                    </div>
+                    <a href="https://forms.gle/VasYkRjvcnti5QoX7" class="btn btn-exam">Kerjakan Sekarang <i class="fas fa-arrow-right ms-2"></i></a>
+                </div>
+            </div>
 
-                <div class="glass-card sidebar-box">
-                    <h6 class="fw-bold mb-4 text-uppercase letter-spacing-1">Petunjuk Ujian</h6>
-                    <div class="instruction-step">
-                        <div class="step-num">01</div>
-                        <div>Gunakan perangkat dengan layar yang cukup (Tablet/Laptop disarankan).</div>
-                    </div>
-                    <div class="instruction-step">
-                        <div class="step-num">02</div>
-                        <div>Klik <b>"Initialize"</b> pada mata pelajaran yang diujikan sesuai jadwal.</div>
-                    </div>
-                    <div class="instruction-step">
-                        <div class="step-num">03</div>
-                        <div>Pastikan klik <b>"Submit/Kirim"</b> sebelum batas waktu berakhir.</div>
-                    </div>
+            <div class="col-md-6 col-lg-4">
+                <div class="subject-card">
+                    <span class="status-badge badge-online">Tersedia</span>
+                    <div class="icon-box" style="background: #fff7ed; color: #ea580c;">
+                        <i class="fas fa-globe-americas"></i>
+                    </div>
+                    <h5 class="fw-bold mb-1">IPS Terpadu</h5>
+                    <p class="text-muted small mb-3">Ujian wawasan geografi, sejarah, dan ekonomi.</p>
+                    <div class="meta-info">
+                        <span><i class="far fa-clock me-1"></i> 90 Menit</span>
+                        <span><i class="far fa-file-alt me-1"></i> 50 Soal</span>
+                    </div>
+                    <a href="#" class="btn btn-exam">Kerjakan Sekarang <i class="fas fa-arrow-right ms-2"></i></a>
+                </div>
+            </div>
 
-                    <div class="mt-4 p-3 rounded" style="background: rgba(250, 204, 21, 0.05); border: 1px solid rgba(250, 204, 21, 0.2);">
-                        <small class="text-warning d-block mb-1"><i class="fas fa-clock me-1"></i> OPERASIONAL UM:</small>
-                        <small class="text-secondary" style="font-size: 0.75rem;">Akses ujian ditutup otomatis setiap hari pada pukul 15.00 WIB.</small>
-                    </div>
-                </div>
-            </div>
+            <div class="col-md-6 col-lg-4">
+                <div class="subject-card">
+                    <span class="status-badge badge-online">Tersedia</span>
+                    <div class="icon-box" style="background: #fdf2f8; color: #db2777;">
+                        <i class="fas fa-square-root-variable"></i>
+                    </div>
+                    <h5 class="fw-bold mb-1">Matematika</h5>
+                    <p class="text-muted small mb-3">Logika angka, aljabar, dan geometri.</p>
+                    <div class="meta-info">
+                        <span><i class="far fa-clock me-1"></i> 120 Menit</span>
+                        <span><i class="far fa-file-alt me-1"></i> 35 Soal</span>
+                    </div>
+                    <a href="#" class="btn btn-exam">Kerjakan Sekarang <i class="fas fa-arrow-right ms-2"></i></a>
+                </div>
+            </div>
 
-            <div class="col-lg-8">
-                <div class="row g-3">
-                    <div class="col-md-6">
-                        <div class="glass-card">
-                            <div class="icon-hex"><i class="fas fa-book-quran"></i></div>
-                            <h5 class="fw-bold">Al-Qur'an Hadits</h5>
-                            <p class="small text-secondary">Evaluasi literasi teks suci dan analisis riwayat.</p>
-                            <div class="meta-info"><span><i class="far fa-clock me-1"></i> 90m</span><span><i class="far fa-file-alt me-1"></i> 40 Soal</span></div>
-                            <a href="https://docs.google.com/forms/d/e/1FAIpQLSeMAAQAK76qwp-1vQQn6ZUjUbFbjyjk94AtaFDbb1OMXgmBRg/viewform?usp=dialog" class="btn btn-modern">Initialize <i class="fas fa-arrow-right ms-2"></i></a>
-                        </div>
-                    </div>
+            <div class="col-md-6 col-lg-4">
+                <div class="subject-card">
+                    <span class="status-badge badge-online">Tersedia</span>
+                    <div class="icon-box" style="background: #f0fdf4; color: #16a34a;">
+                        <i class="fas fa-shield-halved"></i>
+                    </div>
+                    <h5 class="fw-bold mb-1">PKn</h5>
+                    <p class="text-muted small mb-3">Pemahaman nilai Pancasila dan Kewarganegaraan.</p>
+                    <div class="meta-info">
+                        <span><i class="far fa-clock me-1"></i> 60 Menit</span>
+                        <span><i class="far fa-file-alt me-1"></i> 40 Soal</span>
+                    </div>
+                    <a href="#" class="btn btn-exam">Kerjakan Sekarang <i class="fas fa-arrow-right ms-2"></i></a>
+                </div>
+            </div>
 
-                    <div class="col-md-6">
-                        <div class="glass-card">
-                            <div class="icon-hex"><i class="fas fa-heart"></i></div>
-                            <h5 class="fw-bold">Akidah Akhlak</h5>
-                            <p class="small text-secondary">Evaluasi karakter dan integritas moral Islam.</p>
-                            <div class="meta-info"><span><i class="far fa-clock me-1"></i> 90m</span><span><i class="far fa-file-alt me-1"></i> 40 Soal</span></div>
-                            <a href="#" class="btn btn-modern">Initialize <i class="fas fa-arrow-right ms-2"></i></a>
-                        </div>
-                    </div>
+            <div class="col-md-6 col-lg-4">
+                <div class="subject-card">
+                    <span class="status-badge badge-online">Tersedia</span>
+                    <div class="icon-box" style="background: #faf5ff; color: #9333ea;">
+                        <i class="fas fa-language"></i>
+                    </div>
+                    <h5 class="fw-bold mb-1">Bahasa Inggris</h5>
+                    <p class="text-muted small mb-3">Reading comprehension & grammar test.</p>
+                    <div class="meta-info">
+                        <span><i class="far fa-clock me-1"></i> 90 Menit</span>
+                        <span><i class="far fa-file-alt me-1"></i> 45 Soal</span>
+                    </div>
+                    <a href="#" class="btn btn-exam">Kerjakan Sekarang <i class="fas fa-arrow-right ms-2"></i></a>
+                </div>
+            </div>
 
-                    <div class="col-md-6">
-                        <div class="glass-card">
-                            <div class="icon-hex"><i class="fas fa-gavel"></i></div>
-                            <h5 class="fw-bold">Fikih</h5>
-                            <p class="small text-secondary">Pemahaman hukum ibadah dan muamalah Islam.</p>
-                            <div class="meta-info"><span><i class="far fa-clock me-1"></i> 90m</span><span><i class="far fa-file-alt me-1"></i> 40 Soal</span></div>
-                            <a href="#" class="btn btn-modern">Initialize <i class="fas fa-arrow-right ms-2"></i></a>
-                        </div>
-                    </div>
+             <div class="col-md-6 col-lg-4">
+                <div class="subject-card">
+                    <span class="status-badge badge-online">Tersedia</span>
+                    <div class="icon-box" style="background: #fff1f2; color: #e11d48;">
+                        <i class="fas fa-heart"></i>
+                    </div>
+                    <h5 class="fw-bold mb-1">Akidah Akhlak</h5>
+                    <p class="text-muted small mb-3">Pembentukan karakter dan pemahaman akidah.</p>
+                    <div class="meta-info">
+                        <span><i class="far fa-clock me-1"></i> 90 Menit</span>
+                        <span><i class="far fa-file-alt me-1"></i> 40 Soal</span>
+                    </div>
+                    <a href="#" class="btn btn-exam">Kerjakan Sekarang <i class="fas fa-arrow-right ms-2"></i></a>
+                </div>
+            </div>
 
-                    <div class="col-md-6">
-                        <div class="glass-card">
-                            <div class="icon-hex"><i class="fas fa-history"></i></div>
-                            <h5 class="fw-bold">SKI</h5>
-                            <p class="small text-secondary">Sejarah peradaban dan kebudayaan Islam.</p>
-                            <div class="meta-info"><span><i class="far fa-clock me-1"></i> 90m</span><span><i class="far fa-file-alt me-1"></i> 40 Soal</span></div>
-                            <a href="#" class="btn btn-modern">Initialize <i class="fas fa-arrow-right ms-2"></i></a>
-                        </div>
-                    </div>
+        </div>
+    </main>
 
-                    <div class="col-md-6">
-                        <div class="glass-card">
-                            <div class="icon-hex" style="color:#00a3ff;"><i class="fas fa-calculator"></i></div>
-                            <h5 class="fw-bold">Matematika</h5>
-                            <p class="small text-secondary">Ujian logika angka dan analisis numerik.</p>
-                            <div class="meta-info"><span><i class="far fa-clock me-1"></i> 120m</span><span><i class="far fa-file-alt me-1"></i> 35 Soal</span></div>
-                            <a href="#" class="btn btn-modern">Initialize <i class="fas fa-arrow-right ms-2"></i></a>
-                        </div>
-                    </div>
+    <footer class="py-5 text-center text-muted">
+        <div class="container border-top pt-4">
+            <p class="small mb-0">&copy; 2026 <strong>MTS NURUL BAHRI</strong>. Powered by Digital Madrasah System.</p>
+        </div>
+    </footer>
 
-                    <div class="col-md-6">
-                        <div class="glass-card">
-                            <div class="icon-hex" style="color:#10b981;"><i class="fas fa-microscope"></i></div>
-                            <h5 class="fw-bold">IPA Terpadu</h5>
-                            <p class="small text-secondary">Analisis fenomena alam dan sains dasar.</p>
-                            <div class="meta-info"><span><i class="far fa-clock me-1"></i> 120m</span><span><i class="far fa-file-alt me-1"></i> 40 Soal</span></div>
-                            <a href="#" class="btn btn-modern">Initialize <i class="fas fa-arrow-right ms-2"></i></a>
-                        </div>
-                    </div>
-
-                </div>
-            </div>
-        </div>
-    </main>
-<br>
-<br>
-<br>
-    <footer class="text-center py-5 opacity-50 small">
-        <div class="container border-top border-secondary pt-4">
-            <p class="mb-1">&copy; 2026 MTS NURUL BAHRI • UJIAN MADRASAH DIGITAL SYSTEM</p>
-            <p style="letter-spacing: 2px;">SECURE CONNECTION • ANTI-FRAUD SYSTEM ACTIVE</p>
-        </div>
-    </footer>
-
-    <script>
-        function updateStatus() {
-            const now = new Date();
-            const hours = now.getHours();
-            const lockOverlay = document.getElementById('lock-overlay');
-            const liveIndicator = document.getElementById('live-indicator');
-            const clockDisplay = document.getElementById('clock-display');
-
-            const timeStr = now.toLocaleTimeString('id-ID', { hour: '2-digit', minute: '2-digit', second: '2-digit' }) + " WIB";
-            clockDisplay.innerText = "Waktu Sekarang: " + timeStr;
-
-            // Logika: Tutup jika Jam >= 15 (jam 3 sore) ATAU Jam < 6 (sebelum jam 6 pagi)
-            if (hours >= 15 || hours < 5) {
-                lockOverlay.style.display = 'flex';
-                liveIndicator.innerHTML = '<i class="fas fa-circle me-1" style="color: var(--danger);"></i> System Closed';
-                liveIndicator.style.color = 'var(--danger)';
-            } else {
-                lockOverlay.style.display = 'none';
-                liveIndicator.innerHTML = '<i class="fas fa-circle me-1" style="color: var(--accent);"></i> System Live';
-                liveIndicator.style.color = 'var(--accent)';
-            }
-        }
-
-        setInterval(updateStatus, 1000);
-        updateStatus();
-    </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
